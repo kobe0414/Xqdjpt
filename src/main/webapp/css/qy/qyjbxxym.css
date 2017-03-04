@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+.lineDiv {
+	width: 100%;
+	height: 1px;
+	background-color: black;
+}
+
+.jbxxBt {
+	padding-left: 15px;
+}
+
+.jbxxZt {
+	margin-top: 10px;
+	width: 600px;
+	margin-left: 15px;
+}

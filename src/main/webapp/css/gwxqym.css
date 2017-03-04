@@ -1,0 +1,47 @@
+@CHARSET "UTF-8";
+
+.xqtop {
+	width: 100%;
+	height: 120px;
+}
+
+.inXqtopDiv {
+	margin-left: 10px;
+	margin-top: 5px;
+	font-size: 18px;
+}
+
+.xqmiddle {
+	width: 100%;
+	height: 100px;
+}
+
+.xqmiddle ul li {
+	margin-top: 5px;
+	list-style: none;
+	float: left;
+	width: 280px;
+}
+
+.xqmiddle ul {
+	padding-left: 10px;
+}
+
+.lineDiv {
+	width: 100%;
+	height: 1px;
+	background-color: #6D6D6D;
+}
+
+.xqbottom {
+	width: 100%;
+	padding-left: 10px;
+}
+
+.gwzzDiv {
+	
+}
+
+.rzyqDiv {
+	
+}

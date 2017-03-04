@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+	<import resource="classpath:beans.xml" />
+	<mvc:annotation-driven />
+	<context:component-scan base-package="stu" />
+
+	<!-- <bean id="job" class="com.mavenTest.Task.TaskJob" /> <bean id="cronTask" 
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> 
+		<property name="targetObject" ref="job" /> <property name="targetMethod" 
+		value="runWork" /> false表示job不会并发执行，默认为true <property name="concurrent" value="false" 
+		/> </bean> 配置触发器 <bean id="doWork" class="org.springframework.scheduling.quartz.CronTriggerBean"> 
+		<property name="jobDetail" ref="cronTask" /> <property name="cronExpression" 
+		value="0 0 0 8 * ?" /> </bean> -->
+
+	<!-- 配置调度工厂 -->
+	<!-- <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean"> 
+		<property name="triggers"> <list> <ref bean="doWork" /> </list> </property> 
+		</bean> 使用注解的方式 <task:annotation-driven /> 加载配置文件 <bean id="propertyConfigurer" 
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
+		<property name="locations"> <list> <value>classpath*:*.properties</value> 
+		</list> </property> </bean> -->
+
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"> 
+		<property name="messageConverters"> <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"> 
+		<property name="supportedMediaTypes"> <list> <value>text/plain;charset=utf-8</value> 
+		<value>text/html;charset=utf-8</value> <value>text/json;charset=utf-8</value> 
+		<value>application/json;charset=utf-8</value> </list> </property> </bean> 
+		</property> </bean> -->
+	<!-- 配置视图解析器 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 前缀 -->
+		<property name="prefix" value="/view/"></property>
+		<!-- 后缀 -->
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+
+</beans>

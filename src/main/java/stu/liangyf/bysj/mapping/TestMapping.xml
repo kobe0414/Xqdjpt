@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="stu.liangyf.bysj.dao.TestDao">
+
+
+	<resultMap id="BaseResultMap" type="stu.liangyf.bysj.entity.QyjbxxEntity">
+		<result column="qyid" property="qyid" jdbcType="VARCHAR" />
+		<result column="qymc" property="qymc" jdbcType="VARCHAR" />
+		<result column="qyyx" property="qyyx" jdbcType="VARCHAR" />
+		<result column="qylxdh" property="qylxdh" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="getQyjbxxByQyid" resultType="stu.liangyf.bysj.entity.QyjbxxEntity"
+		parameterType="String">
+		select qyid,qymc,qyyx,qylxdh from qyjbxx t where t.qyid
+		= #{qyid}
+	</select>
+
+</mapper>

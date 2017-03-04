@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+.bodyDiv {
+	width: 960px;
+	margin: 0 auto;
+}
+
+.testDiv {
+	width: 40px;
+	height: 40px;
+	background-color: blue;
+}

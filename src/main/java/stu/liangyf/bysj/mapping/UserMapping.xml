@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="stu.liangyf.bysj.dao.UserDao">
+
+	<select id="getXsjbxx" resultType="stu.liangyf.bysj.entity.XsjbxxEntity">
+		SELECT
+		t.xshkszd,
+		t.xshyzk,
+		t.xsid,
+		t.xsqwcszy,
+		t.xsqwgzdd,
+		t.xsshzs,
+		t.xssjhm,
+		t.xssxzy,
+		t.xsszxxid,
+		t.xsxb,
+		t.xsxl,
+		t.xsxm,
+		t.xsyx,
+		t.xsyynl,
+		t.xszp,
+		t.xszwpj,
+		t.xszyjn,
+		t.xszzmm
+		FROM
+		xsjbxx t
+		WHERE
+		(t.xssjhm = #{0} OR
+		t.xsyx = #{1})
+		AND t.xsdlmm
+		= #{2}
+	</select>
+
+	<select id="getXsjbxxByXsid" resultType="stu.liangyf.bysj.entity.XsjbxxEntity">
+		SELECT
+		t.xshkszd,
+		t.xshyzk,
+		t.xsid,
+		t.xsqwcszy,
+		g.gwlbmc,
+		t.xsqwgzdd,
+		c.city,
+		p.provinceId,
+		p.province,
+		t.xsqwyx,
+		CASE
+		WHEN t.xsqwyx
+		= '1' THEN
+		'2000以下'
+		WHEN t.xsqwyx =
+		'2' THEN
+		'2000-3000/月'
+		WHEN t.xsqwyx = '3' THEN
+		'3000-4000/月'
+		WHEN
+		t.xsqwyx = '4' THEN
+		'4000以上/月'
+		END xsqwyxmc,
+		t.xsshzs,
+		t.xssjhm,
+		t.xssxzy,
+		t.xsszxxid,
+		s.school_name,
+		s.school_pro_id,
+		t.xsxb,
+		t.xsxl,
+		CASE
+		WHEN t.xsxl
+		= '1' THEN
+		'大专'
+		WHEN t.xsxl = '2' THEN
+		'本科'
+		WHEN t.xsxl = '3' THEN
+		'硕士'
+		WHEN t.xsxl = '4' THEN
+		'博士'
+		END xsxlmc,
+		t.xsxm,
+		t.xsyx,
+		t.xsyynl,
+		t.xszp,
+		t.xszwpj,
+		t.xszyjn,
+		t.xszzmm,
+		CASE
+		WHEN t.xszzmm = '1' THEN
+		'团员'
+		WHEN
+		t.xszzmm = '2' THEN
+		'预备党员'
+		WHEN t.xszzmm = '3' THEN
+		'党员'
+		END xszzmmmc,
+		t.xscsrq
+		FROM
+		xsjbxx t,
+		city c,
+		province p,
+		gwlbwd g,
+		school s
+		WHERE
+		c.cityId
+		= t.xsqwgzdd
+		AND c.provinceId = p.provinceId
+		AND g.gwlbid = t.xsqwcszy
+		AND t.xsszxxid = s.id
+		AND t.xsid = #{0}
+	</select>
+
+
+	<select id="getQyjbxx" resultType="stu.liangyf.bysj.entity.QyjbxxEntity">
+		SELECT
+		t.qydz,
+		t.qygm,
+		t.qyhy,
+		t.qyid,
+		t.qyjs,
+		t.qylxdh,
+		t.qymc,
+		t.qyyx
+		FROM
+		qyjbxx t
+		WHERE
+		(t.qylxdh = #{0}
+		OR t.qyyx = #{1})
+		AND t.qydlmm = #{2}
+	</select>
+
+	<select id="listGwjbxx" resultType="stu.liangyf.bysj.entity.GwjbxxEntity"
+		parameterType="hashmap">
+		SELECT
+		t.gwid,
+		t.gwmc,
+		t.gwfbqyid,
+		q.qymc,
+		t.gwgzdd,
+		c.city,
+		t.gwyx,
+		CASE
+		WHEN
+		t.gwyx
+		= '1' THEN
+		'2000以下'
+		WHEN t.gwyx = '2' THEN
+		'2000-3000/月'
+		WHEN t.gwyx
+		= '3' THEN
+		'3000-4000/月'
+		WHEN t.gwyx = '4' THEN
+		'4000以上/月'
+		END gwyxmc,
+		t.gwfbrq
+		FROM
+		gwjbxx t,
+		qyjbxx q,
+		city c
+		WHERE
+		t.gwfbqyid = q.qyid
+		AND
+		t.gwgzdd = c.cityId
+		<if test="gwgzdd != null">
+			AND t.gwgzdd = #{gwgzdd}
+		</if>
+		<if test="gwyx != null">
+			AND t.gwyx = #{gwyx}
+		</if>
+		<if test="gwfbrq != null">
+			AND DATE_ADD(t.gwfbrq, INTERVAL + #{gwfbrq} DAY) >=
+			date_format(now(),
+			'%y-%m-%d')
+		</if>
+		<if test="gwlbid != null">
+			AND t.gwlbid = #{gwlbid}
+		</if>
+		<if test="gwgjz != null">
+			AND t.gwmc like CONCAT('%','${gwgjz}','%' )
+		</if>
+		AND NOT EXISTS (
+		SELECT
+		1
+		FROM
+		xsypb x
+		WHERE
+		t.gwid = x.gwid
+		AND x.xsid =
+		#{xsid}
+		)
+		ORDER BY t.gwfbrq
+		LIMIT #{offset} ,#{limit}	
+
+	</select>
+
+	<select id="getGwjbxxByGwid" resultType="stu.liangyf.bysj.entity.GwjbxxEntity">
+		SELECT
+		g.gwmc,
+		q.qymc,
+		g.gwdy,
+		CASE
+		WHEN
+		g.gwyx
+		= '1' THEN
+		'2000以下'
+		WHEN g.gwyx = '2' THEN
+		'2000-3000/月'
+		WHEN g.gwyx
+		= '3' THEN
+		'3000-4000/月'
+		WHEN g.gwyx = '4' THEN
+		'4000以上/月'
+		END gwyxmc,
+		c.city,
+		g.gwfbrq,
+		g.gwzprs,
+		l.gwlbmc,
+		g.gwms,
+		q.qyjs
+		from gwjbxx g,qyjbxx q,city c,gwlbwd l
+		where g.gwfbqyid = q.qyid
+		and
+		g.gwgzdd = c.cityId
+		and g.gwlbid = l.gwlbid
+		and g.gwid = #{0}
+	</select>
+
+	<insert id="insertXsypxx">
+		INSERT INTO xsypb (gwid, xsid, tdjlsj, dqzt)
+		VALUES
+		(#{0},#{1}, NOW(),#{2})
+	</insert>
+
+
+	<select id="listWdtdjlByXsid" resultType="stu.liangyf.bysj.entity.XsypxxEntity"
+		parameterType="hashmap">
+		SELECT
+		g.gwid,
+		g.gwmc,
+		q.qymc,
+		x.tdjlsj,
+		x.dqzt
+		from xsypb x,gwjbxx g,qyjbxx q
+		where x.gwid = g.gwid
+		and g.gwfbqyid = q.qyid
+		and x.xsid = #{xsid}
+		<if test="dqzt != null">
+		and x.dqzt = #{dqzt}
+		</if>
+		LIMIT #{offset} ,#{limit}	
+	</select>
+	
+	<select id="countWdtdjlByXsid" resultType="java.lang.Integer"
+		parameterType="hashmap">
+		SELECT
+		count(*)
+		from xsypb x,gwjbxx g,qyjbxx q
+		where x.gwid = g.gwid
+		and g.gwfbqyid = q.qyid
+		and x.xsid = #{xsid}
+		<if test="dqzt != null">
+		and x.dqzt = #{dqzt}
+		</if>	
+	</select>
+</mapper>

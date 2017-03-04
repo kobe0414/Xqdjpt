@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="stu.liangyf.bysj.dao.QyDao">
+
+
+
+
+	<select id="getQyjbxxByQyid" resultType="stu.liangyf.bysj.entity.QyjbxxEntity">
+		SELECT
+		q.qyid,
+		q.qymc,
+		q.qyyx,
+		q.qylxdh,
+		q.qygm,
+		q.qyxz,
+		q.qyhy,
+		q.qydz,
+		q.qyjs
+		from qyjbxx q
+		where
+		q.qyid = #{0}
+	</select>
+
+	<select id="listGwypxxByQyid" resultType="stu.liangyf.bysj.entity.GwjbxxEntity"
+		parameterType="hashmap">
+		SELECT
+		g.gwid,g.gwmc,g.gwzprs,count(x.xsid) yprs
+		from
+		gwjbxx g,xsypb x
+		where g.gwid = x.gwid
+		and g.gwfbqyid = #{qyid}
+		group by
+		g.gwid,g.gwmc,g.gwzprs
+		order by g.gwzprs
+		LIMIT #{offset} ,#{limit}
+	</select>
+
+	<select id="countGwypxxByQyid" resultType="java.lang.Integer"
+		parameterType="hashmap">
+		SELECT
+		count(distinct g.gwid )
+		from gwjbxx g where
+		g.gwfbqyid = #{qyid}
+	</select>
+
+	<select id="listGwypxsxxByGwid" resultType="stu.liangyf.bysj.entity.XsypxxEntity"
+		parameterType="hashmap">
+		SELECT
+		t.tdjlsj,
+		x.xsid,
+		x.xsxm,
+		x.xsxl,
+		t.dqzt,
+		s.school_name,
+		CASE
+		WHEN x.xsxl = '1' THEN
+		'大专'
+		WHEN x.xsxl = '2' THEN
+		'本科'
+		WHEN x.xsxl = '3' THEN
+		'硕士'
+		WHEN x.xsxl = '4' THEN
+		'博士'
+		END xsxlmc
+		FROM
+		xsypb t,
+		xsjbxx x,
+		school s
+		WHERE
+		t.xsid = x.xsid
+		AND x.xsszxxid = s.id
+		AND t.gwid = #{gwid}
+		LIMIT #{offset} ,#{limit}
+	</select>
+
+	<select id="countGwypxsxxByGwid" resultType="java.lang.Integer"
+		parameterType="hashmap">
+		SELECT
+		count(*)
+		FROM
+		xsypb t
+		WHERE
+		t.gwid = #{gwid}
+	</select>
+
+	<insert id="insertGwjbxx" parameterType="stu.liangyf.bysj.entity.GwjbxxEntity">
+		INSERT INTO gwjbxx (
+		gwid,
+		gwfbqyid,
+		gwdy,
+		gwfbrq,
+		gwgzdd,
+		gwlbid,
+		gwmc,
+		gwms,
+		gwyx,
+		gwzprs
+		)
+		VALUES
+		(#{gwid},#{gwfbqyid},#{gwdy},now(),#{gwgzdd},#{gwlbid},#{gwmc},#{gwms},#{gwyx},#{gwzprs})
+	</insert>
+</mapper>

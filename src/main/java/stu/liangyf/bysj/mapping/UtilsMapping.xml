@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="stu.liangyf.bysj.dao.UtilsDao">
+
+
+	<select id="listProvince" resultType="stu.liangyf.bysj.entity.ProvinceEntity">
+		select
+		t.id,t.provinceId,t.province from province t
+	</select>
+
+	<select id="listCitiesByProvinceId" resultType="stu.liangyf.bysj.entity.CityEntity"
+		parameterType="String">
+		SELECT t.id,t.cityId,t.city,t.provinceId from city t where t.provinceId =
+		#{provinceId}
+	</select>
+
+	<select id="listSchoolsByProvinceId" resultType="stu.liangyf.bysj.entity.SchoolEntity"
+		parameterType="int">
+		select t.id,t.school_name,t.school_pro_id from school t where
+		t.school_pro_id = #{provinceId}
+	</select>
+
+	<select id="listGwlbwd" resultType="stu.liangyf.bysj.entity.GwlbwdEntity">
+		SELECT t.gwlbid,t.gwlbmc
+		from gwlbwd t
+	</select>
+</mapper>
