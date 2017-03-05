@@ -19,4 +19,8 @@ public interface QyService {
 	public JSONObject listGwypxsxxByGwid(HttpServletRequest request);
 	
 	public JSONObject insertGwjbxx(HttpServletRequest request);
+	
+	public int updateGwjbxx(HttpServletRequest request);
+	
+	public int updateQyjbxx(HttpServletRequest request);
 }

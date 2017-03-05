@@ -27,5 +27,8 @@ public interface UserService {
 	
 	public JSONObject listWdtdjlByXsid(HttpServletRequest request);
 	
+	public int updateXsjlmc(String xsid,String xsjlmc);
+	
+	public int updateXsjbxx(HttpServletRequest request);
 	
 }

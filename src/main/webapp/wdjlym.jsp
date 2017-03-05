@@ -3,7 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel='icon' href='<%=request.getContextPath()%>/images/xiao.ico' type='image/x-ico' /> 
+<link rel='icon' href='<%=request.getContextPath()%>/images/xiao.ico'
+	type='image/x-ico' />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>我的简历</title>
 <link type="text/css" rel="stylesheet"
@@ -12,7 +13,7 @@
 	href="<%=request.getContextPath()%>/css/wdjlym.css">
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap-datetimepicker.min.css">
-	<link type="text/css" rel="stylesheet"
+<link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/fileinput.min.css">
 <link type="text/css" rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
@@ -27,9 +28,9 @@
 			<span id="bjHuoBcSpan" style="margin-left: 800px; cursor: pointer;">编辑</span>
 		</div>
 		<div class="lineDiv"></div>
-		
+
 		<div id="wdjlckDiv" class="wdjlZt">
-		    <form class="form-horizontal">
+			<form class="form-horizontal">
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label">姓名:</label>
 					<div class="col-sm-9">
@@ -69,13 +70,15 @@
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label">政治面貌:</label>
 					<div class="col-sm-9">
-						<label id="xszzmm" for="inputEmail3" class="control-label" value="2"></label>
+						<label id="xszzmm" for="inputEmail3" class="control-label"
+							value="2"></label>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label">所在高校:</label>
 					<div class="col-sm-9">
-						<label id="xsszxx" for="inputEmail3" class="control-label" value="1"></label>
+						<label id="xsszxx" for="inputEmail3" class="control-label"
+							value="1"></label>
 					</div>
 				</div>
 				<div class="form-group">
@@ -89,7 +92,7 @@
 					<div class="col-sm-9">
 						<label id="xsqwgzdd" for="inputEmail3" class="control-label"></label>
 					</div>
-					
+
 				</div>
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label">期望月薪:</label>
@@ -100,25 +103,28 @@
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label">在校获奖情况:</label>
 					<div class="col-sm-9">
-						<textarea id="xsshzs" class="form-control" rows="5" readonly="readonly"></textarea>
+						<textarea id="xsshzs" class="form-control" rows="5"
+							readonly="readonly"></textarea>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label">专业技能:</label>
 					<div class="col-sm-9">
-						<textarea id="xszyjn" class="form-control" rows="5" readonly="readonly"></textarea>
+						<textarea id="xszyjn" class="form-control" rows="5"
+							readonly="readonly"></textarea>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label">自我评价:</label>
 					<div class="col-sm-9">
-						<textarea id="xszwpj" class="form-control" rows="5" readonly="readonly"></textarea>
+						<textarea id="xszwpj" class="form-control" rows="5"
+							readonly="readonly"></textarea>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputEmail3" class="col-sm-3 control-label">简历附件上传:</label>
+					<label for="inputEmail3" class="col-sm-3 control-label">简历附件下载:</label>
 					<div class="col-sm-9">
-						
+					<label id="xsjlxz" for="inputEmail3" class="control-label wdjlxz">简历下载</label>
 					</div>
 				</div>
 			</form>
@@ -153,13 +159,15 @@
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label">邮箱:</label>
 					<div class="col-sm-9">
-						<input id="xsyxInput" type="text" class="form-control" placeholder="邮箱">
+						<input id="xsyxInput" type="text" class="form-control"
+							placeholder="邮箱">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label">手机号:</label>
 					<div class="col-sm-9">
-						<input id="xssjhmInput" type="text" class="form-control" placeholder="手机号">
+						<input id="xssjhmInput" type="text" class="form-control"
+							placeholder="手机号">
 					</div>
 				</div>
 				<div class="form-group">
@@ -186,25 +194,28 @@
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label">所在高校:</label>
 					<div class="col-sm-3">
-						<select id="provinceSchoolSelect" class="selectpicker" data-width="150px" data-live-search="true">
+						<select id="provinceSchoolSelect" class="selectpicker"
+							data-width="150px" data-live-search="true">
 							<option>浙江省</option>
 							<option>安徽省</option>
 							<option>江苏省</option>
 						</select>
 					</div>
 					<div class="col-sm-6">
-						<select id="schoolSelect" class="selectpicker" data-width="290px" data-live-search="true">
+						<select id="schoolSelect" class="selectpicker" data-width="290px"
+							data-live-search="true">
 							<option>杭州师范大学</option>
 							<option>杭州电子科技大学</option>
 							<option>浙江大学</option>
 						</select>
 					</div>
-					
+
 				</div>
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label">期望职业类型:</label>
 					<div class="col-sm-9">
-						<select id="xsqwcszySelect" class="selectpicker" data-live-search="true">
+						<select id="xsqwcszySelect" class="selectpicker"
+							data-live-search="true">
 							<option>团员</option>
 							<option>预备党员</option>
 							<option>党员</option>
@@ -214,14 +225,16 @@
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label">期望实习地点:</label>
 					<div class="col-sm-3">
-						<select id="provinceCitySelect" class="selectpicker" data-width="150px" data-live-search="true">
+						<select id="provinceCitySelect" class="selectpicker"
+							data-width="150px" data-live-search="true">
 							<option>浙江省</option>
 							<option>安徽省</option>
 							<option>江苏省</option>
 						</select>
 					</div>
 					<div class="col-sm-3">
-						<select id="citySelect" class="selectpicker" data-width="150px" data-live-search="true">
+						<select id="citySelect" class="selectpicker" data-width="150px"
+							data-live-search="true">
 							<option>杭州市</option>
 							<option>绍兴市</option>
 							<option>南京市</option>
@@ -240,7 +253,7 @@
 						</select>
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label">在校获奖情况:</label>
 					<div class="col-sm-9">
@@ -262,14 +275,18 @@
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label">简历附件上传:</label>
 					<div class="col-sm-9">
-						<input id="input-1" type="file" data-show-caption="true">
+						<form enctype="multipart/form-data">
+							<input id="uploadWdjlInput" name="file" type="file"
+								data-show-caption="true">
+
+						</form>
+
 					</div>
 				</div>
-				
+
 			</form>
 		</div>
-		<div>
-		</div>
+		<div></div>
 	</div>
 </body>
 <script type="text/javascript"
@@ -279,9 +296,9 @@
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 <script type="text/javascript"
-    src="<%=request.getContextPath()%>/js/fileinput.min.js"></script>
-    <script type="text/javascript"
-    src="<%=request.getContextPath()%>/js/zh.js"></script>
+	src="<%=request.getContextPath()%>/js/fileinput.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/zh.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/wdjlym.js"></script>
 <script type="text/javascript"

@@ -113,6 +113,13 @@ li span {
 	width: 160px;
 	display: inline-block;
 }
+
+.wdjlxz {
+	color:blue;
+	text-decoration:underline;
+	cursor:pointer;
+	font-weight:normal;
+}
 </style>
 </head>
 <body class="bodyBackground">
@@ -181,7 +188,7 @@ li span {
 					<div class="xxmkXqDiv">
 						<div class="infoDiv">
 							<ul>
-								<li></li>
+								<li><label id='xsjlxz' class="wdjlxz">简历下载</label></li>
 							</ul>
 						</div>
 					</div>
@@ -192,7 +199,14 @@ li span {
 </body>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
+
+    var xsxx;
 	$(function() {
+		
+		$('#xsjlxz').click(function(){
+			xsjlxz();
+		});
+		
 		(function($) {
 			$.getUrlParam = function(name) {
 				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -213,6 +227,7 @@ li span {
 				xsid : $.getUrlParam('xsid')
 			},
 			success : function(data) {
+				xsxx = data;
 				setXsjbxx(data);
 			}
 		})
@@ -233,6 +248,27 @@ li span {
 		$('#xsshzs').html(data.xsshzs);
 		$('#xszyjn').html(data.xszyjn);
 		$('#xszwpj').html(data.xszwpj);
+	}
+	
+	function xsjlxz(){
+		var form=$("<form>");//定义一个form表单
+		form.attr("style","display:none");
+		form.attr("method","post");
+		form.attr("action","./download.do");
+		var inputXsid=$("<input>");
+		inputXsid.attr("type","hidden");
+		inputXsid.attr("name","xsid");
+		inputXsid.attr("value",$.getUrlParam('xsid'));
+		
+		var inputXsjlmc = $("<input>");
+		inputXsjlmc.attr("type","hidden");
+		inputXsjlmc.attr("name","xsjlmc");
+		inputXsjlmc.attr("value",xsxx.xsjlmc);
+		$("body").append(form);//将表单放置在web中
+		form.append(inputXsid);
+		form.append(inputXsjlmc);
+
+		form.submit();//表单提交
 	}
 </script>
 </html>

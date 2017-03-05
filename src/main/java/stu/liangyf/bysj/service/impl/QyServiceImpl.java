@@ -87,4 +87,33 @@ public class QyServiceImpl implements QyService{
 		return resultJSON;
 	}
 
+	@Override
+	public int updateGwjbxx(HttpServletRequest request) {
+		GwjbxxEntity gwjbxxEntity = new GwjbxxEntity();
+		gwjbxxEntity.setGwdy(request.getParameter("gwdy"));
+		gwjbxxEntity.setGwgzdd(request.getParameter("gwgzdd"));
+		gwjbxxEntity.setGwid(request.getParameter("gwid"));
+		gwjbxxEntity.setGwmc(request.getParameter("gwmc"));
+		gwjbxxEntity.setGwms(request.getParameter("gwms"));
+		gwjbxxEntity.setGwyx(Integer.valueOf(request.getParameter("gwyx")));
+		gwjbxxEntity.setGwzprs(Integer.valueOf(request.getParameter("gwzprs")));
+		gwjbxxEntity.setGwlbid(request.getParameter("gwlbid"));
+		
+		return qyDao.updateGwjbxx(gwjbxxEntity);
+	}
+
+	@Override
+	public int updateQyjbxx(HttpServletRequest request) {
+		QyjbxxEntity qyjbxxEntity = new QyjbxxEntity();
+		qyjbxxEntity.setQyid(request.getParameter("qyid"));
+		qyjbxxEntity.setQyjs(request.getParameter("qyjs"));
+		qyjbxxEntity.setQydz(request.getParameter("qydz"));
+		qyjbxxEntity.setQyhy(request.getParameter("qyhy"));
+		qyjbxxEntity.setQygm(request.getParameter("qygm"));
+		qyjbxxEntity.setQylxdh(request.getParameter("qylxdh"));
+		qyjbxxEntity.setQyyx(request.getParameter("qyyx"));
+		qyjbxxEntity.setQymc(request.getParameter("qymc"));
+		return qyDao.updateQyjbxx(qyjbxxEntity);
+	}
+
 }

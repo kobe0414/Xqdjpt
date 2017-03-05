@@ -46,4 +46,27 @@ public class QyController {
 		
 		return qyService.insertGwjbxx(request);
 	}
+	
+	@RequestMapping(value = "updateGwjbxx.do")
+	@ResponseBody
+	public JSONObject updateGwjbxx(HttpServletRequest request){
+		JSONObject resultJSON = new JSONObject();
+		if(qyService.updateGwjbxx(request) == 1){
+			resultJSON.accumulate("status", "1");
+		}else{
+			resultJSON.accumulate("status", "0");
+		}
+		return resultJSON;
+	}
+	
+	@RequestMapping(value = "updateQyjbxx.do")
+	public JSONObject updateQyjbxx(HttpServletRequest request){
+		JSONObject resultJSON = new JSONObject();
+		if(qyService.updateQyjbxx(request) == 1){
+			resultJSON.accumulate("status", "1");
+		}else{
+			resultJSON.accumulate("status", "0");
+		}
+		return resultJSON;
+	}
 }

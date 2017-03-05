@@ -25,4 +25,8 @@ public interface UserDao {
 	public List<XsypxxEntity> listWdtdjlByXsid(Map<String, Object> params);
 	
 	public int countWdtdjlByXsid(Map<String, Object> params);
+	
+	public int updateXsjlmc(String xsid,String xsjlmc);
+	
+	public int updateXsjbxx(XsjbxxEntity xsjbxxEntity);
 }

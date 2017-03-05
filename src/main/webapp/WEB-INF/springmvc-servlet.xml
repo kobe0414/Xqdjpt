@@ -11,6 +11,7 @@
 	<import resource="classpath:beans.xml" />
 	<mvc:annotation-driven />
 	<context:component-scan base-package="stu" />
+	
 
 	<!-- <bean id="job" class="com.mavenTest.Task.TaskJob" /> <bean id="cronTask" 
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> 

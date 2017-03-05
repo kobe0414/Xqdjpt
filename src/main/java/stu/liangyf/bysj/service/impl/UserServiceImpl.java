@@ -114,6 +114,32 @@ public class UserServiceImpl implements UserService{
 		return resultJson;
 	}
 
+	@Override
+	public int updateXsjlmc(String xsid, String xsjlmc) {
+		
+		return userDao.updateXsjlmc(xsid, xsjlmc);
+	}
+
+	@Override
+	public int updateXsjbxx(HttpServletRequest request) {
+		XsjbxxEntity xsjbxxEntity = new XsjbxxEntity();
+		xsjbxxEntity.setXsid(request.getParameter("xsid"));
+		xsjbxxEntity.setXszwpj(request.getParameter("xszwpj"));
+		xsjbxxEntity.setXszyjn(request.getParameter("xszyjn"));
+		xsjbxxEntity.setXsshzs(request.getParameter("xsshzs"));
+		xsjbxxEntity.setXsqwyx(Integer.valueOf(request.getParameter("xsqwyx")));
+		xsjbxxEntity.setXsqwgzdd(request.getParameter("xsqwgzdd"));
+		xsjbxxEntity.setXsqwcszy(request.getParameter("xsqwcszy"));
+		xsjbxxEntity.setXsszxxid(request.getParameter("xsszxxid"));
+		xsjbxxEntity.setXszzmm(request.getParameter("xszzmm"));
+		xsjbxxEntity.setXsxl(request.getParameter("xsxl"));
+		xsjbxxEntity.setXssjhm(request.getParameter("xssjhm"));
+		xsjbxxEntity.setXsyx(request.getParameter("xsyx"));
+		xsjbxxEntity.setXscsrq(request.getParameter("xscsrq"));
+		
+		return userDao.updateXsjbxx(xsjbxxEntity);
+	}
+
 	
 
 }

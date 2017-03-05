@@ -100,4 +100,33 @@
 		VALUES
 		(#{gwid},#{gwfbqyid},#{gwdy},now(),#{gwgzdd},#{gwlbid},#{gwmc},#{gwms},#{gwyx},#{gwzprs})
 	</insert>
+
+	<update id="updateGwjbxx" parameterType="stu.liangyf.bysj.entity.GwjbxxEntity">
+		UPDATE
+		gwjbxx g
+		SET
+		g.gwlbid = #{gwlbid}
+		,g.gwmc = #{gwmc}
+		,g.gwyx = #{gwyx}
+		,g.gwzprs =
+		#{gwzprs}
+		,g.gwdy = #{gwdy}
+		,g.gwgzdd = #{gwgzdd}
+		,g.gwms = #{gwms}
+		where
+		g.gwid = #{gwid}
+	</update>
+
+	<update id="updateQyjbxx" parameterType="stu.liangyf.bysj.entity.QyjbxxEntity">
+		UPDATE
+		qyjbxx q
+		set q.qymc = #{qymc}
+		,q.qyyx = #{qyyx}
+		,q.qylxdh = #{qylxdh}
+		,q.qygm = #{qygm}
+		,q.qyhy = #{qyhy}
+		,q.qydz = #{qydz}
+		,q.qyjs = #{qyjs}
+		where q.qyid = #{qyid}
+	</update>
 </mapper>

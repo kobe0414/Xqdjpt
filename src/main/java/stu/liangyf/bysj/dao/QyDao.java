@@ -20,5 +20,9 @@ public interface QyDao {
 	public int countGwypxsxxByGwid(Map<String, Object> params);
 	
 	public int insertGwjbxx(GwjbxxEntity gwjbxxEntity);
+	
+	public int updateGwjbxx(GwjbxxEntity gwjbxxEntity);
+	
+	public int updateQyjbxx(QyjbxxEntity qyjbxxEntity);
 
 }

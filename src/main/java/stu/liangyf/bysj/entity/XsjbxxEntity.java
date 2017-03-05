@@ -61,6 +61,16 @@ public class XsjbxxEntity {
 	private String xszzmmmc;
 	
 	private String xscsrq;
+	
+	private String xsjlmc;
+
+	public String getXsjlmc() {
+		return xsjlmc;
+	}
+
+	public void setXsjlmc(String xsjlmc) {
+		this.xsjlmc = xsjlmc;
+	}
 
 	public String getXsid() {
 		return xsid;

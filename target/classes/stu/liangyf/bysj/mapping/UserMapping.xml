@@ -92,7 +92,8 @@
 		WHEN t.xszzmm = '3' THEN
 		'党员'
 		END xszzmmmc,
-		t.xscsrq
+		t.xscsrq,
+		t.xsjlmc
 		FROM
 		xsjbxx t,
 		city c,
@@ -103,7 +104,8 @@
 		c.cityId
 		= t.xsqwgzdd
 		AND c.provinceId = p.provinceId
-		AND g.gwlbid = t.xsqwcszy
+		AND g.gwlbid =
+		t.xsqwcszy
 		AND t.xsszxxid = s.id
 		AND t.xsid = #{0}
 	</select>
@@ -187,7 +189,7 @@
 		#{xsid}
 		)
 		ORDER BY t.gwfbrq
-		LIMIT #{offset} ,#{limit}	
+		LIMIT #{offset} ,#{limit}
 
 	</select>
 
@@ -238,26 +240,54 @@
 		q.qymc,
 		x.tdjlsj,
 		x.dqzt
-		from xsypb x,gwjbxx g,qyjbxx q
+		from xsypb x,gwjbxx g,qyjbxx
+		q
 		where x.gwid = g.gwid
 		and g.gwfbqyid = q.qyid
 		and x.xsid = #{xsid}
 		<if test="dqzt != null">
-		and x.dqzt = #{dqzt}
+			and x.dqzt = #{dqzt}
 		</if>
-		LIMIT #{offset} ,#{limit}	
+		LIMIT #{offset} ,#{limit}
 	</select>
-	
+
 	<select id="countWdtdjlByXsid" resultType="java.lang.Integer"
 		parameterType="hashmap">
 		SELECT
 		count(*)
 		from xsypb x,gwjbxx g,qyjbxx q
 		where x.gwid = g.gwid
-		and g.gwfbqyid = q.qyid
+		and
+		g.gwfbqyid = q.qyid
 		and x.xsid = #{xsid}
 		<if test="dqzt != null">
-		and x.dqzt = #{dqzt}
-		</if>	
+			and x.dqzt = #{dqzt}
+		</if>
 	</select>
+
+	<update id="updateXsjlmc">
+		UPDATE xsjbxx t
+		SET t.xsjlmc = #{1}
+		WHERE
+		t.xsid = #{0}
+	</update>
+
+	<update id="updateXsjbxx" parameterType="stu.liangyf.bysj.entity.XsjbxxEntity">
+		UPDATE
+		xsjbxx t
+		SET
+		t.xscsrq = #{xscsrq}
+		,t.xsyx = #{xsyx}
+		,t.xssjhm = #{xssjhm}
+		,t.xsxl = #{xsxl}
+		,t.xszzmm = #{xszzmm}
+		,t.xsszxxid = #{xsszxxid}
+		,t.xsqwcszy = #{xsqwcszy}
+		,t.xsqwgzdd = #{xsqwgzdd}
+		,t.xsqwyx = #{xsqwyx}
+		,t.xsshzs = #{xsshzs}
+		,t.xszyjn = #{xszyjn}
+		,t.xszwpj = #{xszwpj}
+		where t.xsid = #{xsid}
+	</update>
 </mapper>

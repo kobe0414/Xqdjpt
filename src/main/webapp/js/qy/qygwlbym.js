@@ -49,6 +49,7 @@ var TableInit = function () {
                 }
             }, {
                 title: '操作',
+                field:'xg',
                 align:'center',
                 formatter:function (value, row, index){
                 	return "修改";
@@ -62,6 +63,7 @@ var TableInit = function () {
             }, {
                 title: '操作',
                 align:'center',
+                field:'sc',
                 formatter:function (value, row, index){
                 	return "删除";
                 },
@@ -78,6 +80,10 @@ var TableInit = function () {
             		var gwmc = encodeURI(row.gwmc);
             		gwmc = encodeURI(gwmc);
             		window.open('gwypxsym.jsp?gwid=' + row.gwid+ '&gwmc=' + gwmc);
+            	}else if(field == 'xg'){
+            		window.open('qyfbgwym.jsp');
+            	}else if(field == 'sc'){
+            		
             	}
             },
             
