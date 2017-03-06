@@ -9,6 +9,8 @@
 	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
+<link type="text/css" rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/jquery-confirm.css">
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script
 	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
@@ -61,6 +63,8 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery-confirm.js"></script>	
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/yhdl.js"></script>
 </html>

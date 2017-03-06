@@ -116,4 +116,10 @@ public class QyServiceImpl implements QyService{
 		return qyDao.updateQyjbxx(qyjbxxEntity);
 	}
 
+	@Override
+	public int deleteQygw(HttpServletRequest request) {
+		String gwid = request.getParameter("gwid");
+		return qyDao.deleteQygw(gwid);
+	}
+
 }

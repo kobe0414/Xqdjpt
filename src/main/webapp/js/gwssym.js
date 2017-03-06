@@ -14,9 +14,6 @@ var flag = true;
 
 $(document).ready(function() {
 	
-	
-	
-	
 	$('span[value=all]').css('color', 'red');
 	$('span[isMore=isMore]').hide();
 	$('div[isMore=isMore]').hide();
@@ -70,7 +67,7 @@ $(document).ready(function() {
 		
 		var scrollHeight = $(document).height();
 		var windowHeight = $(this).height();
-		console.log(scrollTop + '-' + windowHeight + '-' + scrollHeight + '-' + $(document).scrollTop());
+		
 		if(scrollTop + windowHeight + 1 >= scrollHeight) {
 			
 			if(flag){
@@ -116,6 +113,9 @@ function setGwjbxx(){
 				$('#lodingDiv').before(totalHtml);
 				offset += searchCondition.limit;
 				flag = true;
+				if(!sfyGdt()){
+					$('#lodingDiv').html('没有更多了...');
+				}
 			}
 			
 		}
@@ -132,9 +132,29 @@ function sqzw(btn){
 		},
 		success:function(data){
 			if(data.status == '1'){
-				
+				$.confirm({
+                    title: '申请成功',
+                    content: '您的简历已经发生给该公司',
+                    autoClose: 'cancelAction|3000',
+                    escapeKey: 'cancelAction',
+                    buttons: {
+                        confirm: {
+                            btnClass: 'btn-primary',
+                            text: '确定',
+                            action: function () {
+                            	
+                            }
+                        },
+                        cancelAction: {
+                            text: '取消',
+                            action: function () {
+                            	
+                            }
+                        }
+                    }
+                });
 			}else{
-				
+				$.alert('申请失败');
 			}
 		}
 	});
@@ -182,4 +202,13 @@ function setCity(provinceId) {
 			setGwjbxx();
 		}
 	});
+}
+function sfyGdt(){
+	var flag = false;
+	$("body").scrollTop(10); 
+	if($("body").scrollTop() > 0) {
+		flag = true;
+	}
+	$("body").scrollTop(0); 
+	return flag;
 }

@@ -38,24 +38,27 @@ $(function() {
 	});
 	
 	$('#xsjlxz').click(function(){
-		var form=$("<form>");//定义一个form表单
-		form.attr("style","display:none");
-		form.attr("method","post");
-		form.attr("action","./download.do");
-		var inputXsid=$("<input>");
-		inputXsid.attr("type","hidden");
-		inputXsid.attr("name","xsid");
-		inputXsid.attr("value",$.cookie('yhid'));
-		
-		var inputXsjlmc = $("<input>");
-		inputXsjlmc.attr("type","hidden");
-		inputXsjlmc.attr("name","xsjlmc");
-		inputXsjlmc.attr("value",$('#xsjlxz').attr('xsjlmc'));
-		$("body").append(form);//将表单放置在web中
-		form.append(inputXsid);
-		form.append(inputXsjlmc);
+		if(wdjl.xsjlmc){
+			var form=$("<form>");//定义一个form表单
+			form.attr("style","display:none");
+			form.attr("method","post");
+			form.attr("action","./download.do");
+			var inputXsid=$("<input>");
+			inputXsid.attr("type","hidden");
+			inputXsid.attr("name","xsid");
+			inputXsid.attr("value",$.cookie('yhid'));
+			
+			var inputXsjlmc = $("<input>");
+			inputXsjlmc.attr("type","hidden");
+			inputXsjlmc.attr("name","xsjlmc");
+			inputXsjlmc.attr("value",$('#xsjlxz').attr('xsjlmc'));
+			$("body").append(form);//将表单放置在web中
+			form.append(inputXsid);
+			form.append(inputXsjlmc);
 
-		form.submit();//表单提交
+			form.submit();//表单提交
+		}
+		
 		
 	});
 
@@ -208,4 +211,9 @@ function setWdjl() {
 	$('#xszwpj').text(wdjl.xszwpj);
 	
 	$('#xsjlxz').attr('xsjlmc',wdjl.xsjlmc);
+	
+	if(!wdjl.xsjlmc){
+		$('#xsjlxz').removeClass("wdjlxz");
+		$('#xsjlxz').text('简历未上传');
+	}
 }

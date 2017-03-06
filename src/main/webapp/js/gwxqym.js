@@ -50,9 +50,29 @@ function sqzw(){
 		},
 		success:function(data){
 			if(data.status == '1'){
-				alert('申请成功');
+				$.confirm({
+                    title: '申请成功',
+                    content: '您的简历已经发生给该公司',
+                    autoClose: 'cancelAction|3000',
+                    escapeKey: 'cancelAction',
+                    buttons: {
+                        confirm: {
+                            btnClass: 'btn-primary',
+                            text: '确定',
+                            action: function () {
+                            	
+                            }
+                        },
+                        cancelAction: {
+                            text: '取消',
+                            action: function () {
+                            	
+                            }
+                        }
+                    }
+                });
 			}else{
-				
+				$.alert('申请失败');
 			}
 		}
 	});

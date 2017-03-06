@@ -24,16 +24,50 @@
 
 	<select id="listGwypxxByQyid" resultType="stu.liangyf.bysj.entity.GwjbxxEntity"
 		parameterType="hashmap">
+		select * from (
 		SELECT
-		g.gwid,g.gwmc,g.gwzprs,count(x.xsid) yprs
-		from
-		gwjbxx g,xsypb x
-		where g.gwid = x.gwid
-		and g.gwfbqyid = #{qyid}
-		group by
-		g.gwid,g.gwmc,g.gwzprs
-		order by g.gwzprs
-		LIMIT #{offset} ,#{limit}
+		*
+		FROM
+		(
+		SELECT
+		g.gwid,
+		g.gwmc,
+		g.gwzprs,
+		count(x.xsid) yprs
+		FROM
+		gwjbxx g,
+		xsypb x
+		WHERE
+		g.gwid = x.gwid
+		AND g.gwyxbz = 'Y'
+		AND g.gwfbqyid = #{qyid}
+		GROUP BY
+		g.gwid,
+		g.gwmc,
+		g.gwzprs
+		) a
+		UNION ALL
+		SELECT
+		g.gwid,
+		g.gwmc,
+		g.gwzprs,
+		0 yprs
+		FROM
+		gwjbxx g
+		WHERE
+		g.gwyxbz = 'Y'
+		AND g.gwfbqyid = #{qyid}
+		AND NOT EXISTS (
+		SELECT
+		1
+		FROM
+		xsypb x
+		WHERE
+		g.gwid = x.gwid
+		)
+		) b order by b.yprs desc
+		LIMIT
+		#{offset} ,#{limit}
 	</select>
 
 	<select id="countGwypxxByQyid" resultType="java.lang.Integer"
@@ -42,6 +76,7 @@
 		count(distinct g.gwid )
 		from gwjbxx g where
 		g.gwfbqyid = #{qyid}
+		and g.gwyxbz = 'Y'
 	</select>
 
 	<select id="listGwypxsxxByGwid" resultType="stu.liangyf.bysj.entity.XsypxxEntity"
@@ -95,10 +130,11 @@
 		gwmc,
 		gwms,
 		gwyx,
-		gwzprs
+		gwzprs,
+		gwyxbz
 		)
 		VALUES
-		(#{gwid},#{gwfbqyid},#{gwdy},now(),#{gwgzdd},#{gwlbid},#{gwmc},#{gwms},#{gwyx},#{gwzprs})
+		(#{gwid},#{gwfbqyid},#{gwdy},now(),#{gwgzdd},#{gwlbid},#{gwmc},#{gwms},#{gwyx},#{gwzprs},'Y')
 	</insert>
 
 	<update id="updateGwjbxx" parameterType="stu.liangyf.bysj.entity.GwjbxxEntity">
@@ -120,13 +156,22 @@
 	<update id="updateQyjbxx" parameterType="stu.liangyf.bysj.entity.QyjbxxEntity">
 		UPDATE
 		qyjbxx q
-		set q.qymc = #{qymc}
+		set q.qymc
+		= #{qymc}
 		,q.qyyx = #{qyyx}
 		,q.qylxdh = #{qylxdh}
 		,q.qygm = #{qygm}
 		,q.qyhy = #{qyhy}
 		,q.qydz = #{qydz}
 		,q.qyjs = #{qyjs}
-		where q.qyid = #{qyid}
+		where q.qyid =
+		#{qyid}
+	</update>
+
+	<update id="deleteQygw">
+		UPDATE
+		gwjbxx t
+		set t.gwyxbz = 'N'
+		where t.gwid = #{0}
 	</update>
 </mapper>

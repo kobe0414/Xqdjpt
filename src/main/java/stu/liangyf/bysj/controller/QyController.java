@@ -60,9 +60,22 @@ public class QyController {
 	}
 	
 	@RequestMapping(value = "updateQyjbxx.do")
+	@ResponseBody
 	public JSONObject updateQyjbxx(HttpServletRequest request){
 		JSONObject resultJSON = new JSONObject();
 		if(qyService.updateQyjbxx(request) == 1){
+			resultJSON.accumulate("status", "1");
+		}else{
+			resultJSON.accumulate("status", "0");
+		}
+		return resultJSON;
+	}
+	
+	@RequestMapping(value = "deleteQygw.do")
+	@ResponseBody
+	public JSONObject deleteQygw(HttpServletRequest request){
+		JSONObject resultJSON = new JSONObject();
+		if(qyService.deleteQygw(request) == 1){
 			resultJSON.accumulate("status", "1");
 		}else{
 			resultJSON.accumulate("status", "0");

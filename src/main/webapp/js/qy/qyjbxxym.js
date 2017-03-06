@@ -15,10 +15,33 @@ $(function(){
 			$('#qyjbxxbcDiv').show();
 			$('#qyjbxxbjDiv').hide();
 			$(this).html('编辑');
+			updateQyjbxx();
+			
 		}
 	});
 });
 
+function updateQyjbxx(){
+	
+	$.ajax({
+		url:'../updateQyjbxx.do',
+		type:'post',
+		data:{
+			qyid:qyjbxx.qyid,
+			qyjs:CKEDITOR.instances.qyjsTextarea.getData(),
+			qydz:$('#qydzInput').val(),
+			qyhy:$('#qyhyInput').val(),
+			qygm:$('#qygmInput').val(),
+			qylxdh:$('#qylxdhInput').val(),
+			qyyx:$('#qyyxInput').val(),
+			qymc:$('#qymcInput').val()
+		},
+		success:function(data){
+			setQyjbxx();
+		}
+	});
+	
+}
 function getQyjbxx(){
 	$('#qymcInput').val(qyjbxx.qymc);
 	$('#qyyxInput').val(qyjbxx.qyyx);
@@ -28,14 +51,13 @@ function getQyjbxx(){
 	$('#qyhyInput').val(qyjbxx.qyhy);
 	$('#qydzInput').val(qyjbxx.qydz);
 	CKEDITOR.instances.qyjsTextarea.setData(qyjbxx.qyjs); 
-
 }
 
 function setQyjbxx(){
 	$.ajax({
 		url:'../getQyjbxxByQyid.do',
 		data:{
-			qyid:'q01'
+			qyid:$.cookie('yhid')
 		},
 		success:function(data){
 			qyjbxx = data;

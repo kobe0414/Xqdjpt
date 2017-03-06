@@ -159,6 +159,7 @@
 		city c
 		WHERE
 		t.gwfbqyid = q.qyid
+		and t.gwyxbz = 'Y'
 		AND
 		t.gwgzdd = c.cityId
 		<if test="gwgzdd != null">
@@ -218,7 +219,7 @@
 		g.gwms,
 		q.qyjs
 		from gwjbxx g,qyjbxx q,city c,gwlbwd l
-		where g.gwfbqyid = q.qyid
+		where g.gwfbqyid = q.qyid and g.gwyxbz = 'Y' 
 		and
 		g.gwgzdd = c.cityId
 		and g.gwlbid = l.gwlbid

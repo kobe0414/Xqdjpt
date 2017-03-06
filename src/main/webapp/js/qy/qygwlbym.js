@@ -42,23 +42,17 @@ var TableInit = function () {
                 title: '投递简历人数',
                 align:'center',
                 cellStyle:function (value,row,index,field){
-                	return {css: {
-                        "color":'blue',
-                        "cursor":'pointer'}
+                	if(value != 0){
+                		return {css: {
+                            "color":'blue',
+                            "cursor":'pointer'}
+                    	}
+                	}else{
+                		return {css: {
+                            "color":'black'}
+                    	}
                 	}
-                }
-            }, {
-                title: '操作',
-                field:'xg',
-                align:'center',
-                formatter:function (value, row, index){
-                	return "修改";
-                },
-                cellStyle:function (value,row,index,field){
-                	return {css: {
-                        "color":'red',
-                        "cursor":'pointer'}
-                	}
+                	
                 }
             }, {
                 title: '操作',
@@ -77,13 +71,14 @@ var TableInit = function () {
             ],
             onClickCell:function(field,value,row){
             	if(field == 'yprs'){
-            		var gwmc = encodeURI(row.gwmc);
-            		gwmc = encodeURI(gwmc);
-            		window.open('gwypxsym.jsp?gwid=' + row.gwid+ '&gwmc=' + gwmc);
-            	}else if(field == 'xg'){
-            		window.open('qyfbgwym.jsp');
-            	}else if(field == 'sc'){
+            		if(value != 0){
+            			var gwmc = encodeURI(row.gwmc);
+                		gwmc = encodeURI(gwmc);
+                		window.open('gwypxsym.jsp?gwid=' + row.gwid+ '&gwmc=' + gwmc);
+            		}
             		
+            	}else if(field == 'sc'){
+            		deleteQygw(row.gwid);
             	}
             },
             
@@ -101,3 +96,63 @@ var TableInit = function () {
     };
     return oTableInit;
 };
+
+
+function deleteQygw(gwid){
+	
+	$.confirm({
+        title: '删除?',
+        content: '您确定要删除该岗位信息吗?',
+        icon: 'fa fa-question-circle',
+        animation: 'scale',
+        closeAnimation: 'scale',
+        opacity: 0.5,
+        buttons: {
+            'confirm': {
+                text: '确定',
+                btnClass: 'btn-info',
+                action: function () {
+                	$.ajax({
+                		url:'../deleteQygw.do',
+                		type:'post',
+                		data:{
+                			gwid:gwid
+                		},
+                		success:function(data){
+                			if(data.status == '1'){
+                				$.confirm({
+                                    title: '删除成功',
+                                    content: '3秒后自动刷新...',
+                                    autoClose: 'cancelAction|3000',
+                                    escapeKey: 'cancelAction',
+                                    buttons: {
+                                        confirm: {
+                                            btnClass: 'btn-primary',
+                                            text: '确定',
+                                            action: function () {
+                                            	window.location.reload(); 
+                                            }
+                                        },
+                                        cancelAction: {
+                                            text: '取消',
+                                            action: function () {
+                                            	window.location.reload(); 
+                                            }
+                                        }
+                                    }
+                                });
+                			}
+                		}
+                	});
+                }
+            },
+            cancel: {
+                text:'取消'
+            }
+        }
+    });
+	
+	
+	
+	
+}

@@ -188,7 +188,7 @@ li span {
 					<div class="xxmkXqDiv">
 						<div class="infoDiv">
 							<ul>
-								<li><label id='xsjlxz' class="wdjlxz">简历下载</label></li>
+								<li><label id='xsjlxz'></label></li>
 							</ul>
 						</div>
 					</div>
@@ -248,27 +248,36 @@ li span {
 		$('#xsshzs').html(data.xsshzs);
 		$('#xszyjn').html(data.xszyjn);
 		$('#xszwpj').html(data.xszwpj);
+		if(data.xsjlmc){
+			$('#xsjlxz').text('简历下载');
+			$('#xsjlxz').addClass('wdjlxz');
+		}else{
+			$('#xsjlxz').text('简历未上传');
+		}
 	}
 	
 	function xsjlxz(){
-		var form=$("<form>");//定义一个form表单
-		form.attr("style","display:none");
-		form.attr("method","post");
-		form.attr("action","./download.do");
-		var inputXsid=$("<input>");
-		inputXsid.attr("type","hidden");
-		inputXsid.attr("name","xsid");
-		inputXsid.attr("value",$.getUrlParam('xsid'));
-		
-		var inputXsjlmc = $("<input>");
-		inputXsjlmc.attr("type","hidden");
-		inputXsjlmc.attr("name","xsjlmc");
-		inputXsjlmc.attr("value",xsxx.xsjlmc);
-		$("body").append(form);//将表单放置在web中
-		form.append(inputXsid);
-		form.append(inputXsjlmc);
+		if(xsxx.xsjlmc){
+			var form=$("<form>");//定义一个form表单
+			form.attr("style","display:none");
+			form.attr("method","post");
+			form.attr("action","./download.do");
+			var inputXsid=$("<input>");
+			inputXsid.attr("type","hidden");
+			inputXsid.attr("name","xsid");
+			inputXsid.attr("value",$.getUrlParam('xsid'));
+			
+			var inputXsjlmc = $("<input>");
+			inputXsjlmc.attr("type","hidden");
+			inputXsjlmc.attr("name","xsjlmc");
+			inputXsjlmc.attr("value",xsxx.xsjlmc);
+			$("body").append(form);//将表单放置在web中
+			form.append(inputXsid);
+			form.append(inputXsjlmc);
 
-		form.submit();//表单提交
+			form.submit();//表单提交
+		}
+		
 	}
 </script>
 </html>

@@ -2,6 +2,7 @@ $(function(){
 	CKEDITOR.replace('gwmsTextarea');
 	setGwlbSelect();
 	setProvince();
+	
 	$('#provinceSelect').change(function(){
 		setCity($(this).val());
 	});
@@ -9,7 +10,10 @@ $(function(){
 	$('#fbHuoBcSpan').click(function(){
 		fbgwjbxx();
 	});
+	
+	
 });
+
 
 function fbgwjbxx(){
 	$.ajax({
@@ -27,9 +31,29 @@ function fbgwjbxx(){
 		},
 		success:function(data){
 			if(data.status == '1'){
-				alert('发布成功');
+				$.confirm({
+                    title: '发布成功',
+                    content: '3秒后自动跳转...',
+                    autoClose: 'cancelAction|3000',
+                    escapeKey: 'cancelAction',
+                    buttons: {
+                        confirm: {
+                            btnClass: 'btn-primary',
+                            text: '确定',
+                            action: function () {
+                            	window.location.href='qygwlbym.jsp';
+                            }
+                        },
+                        cancelAction: {
+                            text: '取消',
+                            action: function () {
+                            	window.location.href='qygwlbym.jsp';
+                            }
+                        }
+                    }
+                });
 			}else{
-				alert('发布失败');
+				$.alert('发布失败');
 			}
 		}
 	});

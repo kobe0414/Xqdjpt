@@ -25,4 +25,5 @@ public interface QyDao {
 	
 	public int updateQyjbxx(QyjbxxEntity qyjbxxEntity);
 
+	public int deleteQygw(String gwid);
 }

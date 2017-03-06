@@ -10,9 +10,13 @@
 	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
+<link type="text/css" rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/jquery-confirm.css">
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/jquery.cookie.js"></script>	
+	src="<%=request.getContextPath()%>/js/jquery.cookie.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery-confirm.js"></script>	
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script
 	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
@@ -63,7 +67,10 @@ $(function(){
         $.getUrlParam = function (name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
             var r = window.location.search.substr(1).match(reg);
-            if (r != null) return unescape(r[2]); return null;
+            if (r != null) {
+            	return unescape(r[2]); 
+            }
+            return null;
         }
     })(jQuery);
 })
