@@ -122,4 +122,17 @@ public class QyServiceImpl implements QyService{
 		return qyDao.deleteQygw(gwid);
 	}
 
+	@Override
+	public int updateXsypzt(HttpServletRequest request) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		String dqzt = request.getParameter("dqzt");
+		String gwid = request.getParameter("gwid");
+		String xsid = request.getParameter("xsid");
+		params.put("dqzt", dqzt);
+		params.put("gwid", gwid);
+		params.put("xsid", xsid);
+		
+		return qyDao.updateXsypzt(params);
+	}
+
 }

@@ -98,11 +98,13 @@ public class UserServiceImpl implements UserService{
 		Map<String, Object> params = new HashMap<String, Object>();
 		String xsid = request.getParameter("xsid");
 		String dqzt = request.getParameter("dqzt");
+		String tdsjsx = request.getParameter("tdsjsx");
 		int limit = Integer.valueOf(request.getParameter("limit"));
 		int offset = Integer.valueOf(request.getParameter("offset"));
 		if(dqzt != null && !"all".equals(dqzt)){
 			params.put("dqzt",dqzt);
 		}
+		params.put("tdsjsx", tdsjsx);
 		params.put("xsid",xsid);
 		params.put("limit", limit);
 		params.put("offset", offset);

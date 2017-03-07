@@ -26,17 +26,20 @@
 		<div class="lineDiv"></div>
 		<div class="wdtdjlZt">
 			<div>
-				<select class="selectpicker">
-							<option>全部状态</option>
-							<option>已面试</option>
-							<option>待反馈</option>
+				<select id="dqztSelect" class="selectpicker">
+							<option value="all">全部状态</option>
+							<option value="1">简历已投递</option>
+							<option value="2">简历通过等待面试</option>
+							<option value="3">简历不通过</option>
+							<option value="5">面试失败</option>
+							<option value="4">被录用</option>
 				</select>
-				<select class="selectpicker">
+				<select id="tdsjsxSelect" class="selectpicker">
 							<option value="1">投递时间由近到远</option>
 							<option value="2">投递时间由远到近</option>
 				</select>
 			</div>
-			<table id="tb_departments"></table>
+			<table id="wdtdjlTable"></table>
 		</div>
 	</div>
 

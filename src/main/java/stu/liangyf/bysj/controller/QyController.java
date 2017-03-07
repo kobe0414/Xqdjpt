@@ -1,7 +1,6 @@
 package stu.liangyf.bysj.controller;
 
-import java.util.List;
-
+import java.util.List;import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +75,18 @@ public class QyController {
 	public JSONObject deleteQygw(HttpServletRequest request){
 		JSONObject resultJSON = new JSONObject();
 		if(qyService.deleteQygw(request) == 1){
+			resultJSON.accumulate("status", "1");
+		}else{
+			resultJSON.accumulate("status", "0");
+		}
+		return resultJSON;
+	}
+	
+	@RequestMapping(value = "updateXsypzt.do")
+	@ResponseBody
+	public JSONObject updateXsypzt(HttpServletRequest request){
+		JSONObject resultJSON = new JSONObject();
+		if(qyService.updateXsypzt(request) == 1){
 			resultJSON.accumulate("status", "1");
 		}else{
 			resultJSON.accumulate("status", "0");

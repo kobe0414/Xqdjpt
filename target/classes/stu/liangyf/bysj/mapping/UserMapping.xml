@@ -249,6 +249,13 @@
 		<if test="dqzt != null">
 			and x.dqzt = #{dqzt}
 		</if>
+		<if test="tdsjsx=='1'.toString()">
+		order by x.tdjlsj desc
+		</if>
+		<if test="tdsjsx=='2'.toString()">
+		order by x.tdjlsj
+		</if>
+		
 		LIMIT #{offset} ,#{limit}
 	</select>
 

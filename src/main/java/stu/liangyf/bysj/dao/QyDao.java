@@ -26,4 +26,6 @@ public interface QyDao {
 	public int updateQyjbxx(QyjbxxEntity qyjbxxEntity);
 
 	public int deleteQygw(String gwid);
+	
+	public int updateXsypzt(Map<String,Object> params);
 }

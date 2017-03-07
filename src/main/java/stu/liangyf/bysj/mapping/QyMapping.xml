@@ -174,4 +174,11 @@
 		set t.gwyxbz = 'N'
 		where t.gwid = #{0}
 	</update>
+
+	<update id="updateXsypzt" parameterType="hashmap">
+		update
+		xsypb t
+		set t.dqzt = #{dqzt}
+		where t.gwid = #{gwid} and t.xsid = #{xsid}
+	</update>
 </mapper>

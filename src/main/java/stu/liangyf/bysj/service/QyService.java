@@ -25,4 +25,6 @@ public interface QyService {
 	public int updateQyjbxx(HttpServletRequest request);
 	
 	public int deleteQygw(HttpServletRequest request);
+	
+	public int updateXsypzt(HttpServletRequest request);
 }
