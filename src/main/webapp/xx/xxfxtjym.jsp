@@ -29,19 +29,19 @@ font-size: 24px;
 					<div class="col-md-4">
 						<div class="panel panel-default">
 							<div class="panel-heading">本校投递简历人数</div>
-							<div class="panel-body rsDiv">100</div>
+							<div id="bxtdjlrsDiv" class="panel-body rsDiv"></div>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="panel panel-default">
 							<div class="panel-heading">投递简历人数中被邀面试的人数</div>
-							<div class="panel-body rsDiv">80</div>
+							<div id="bxbymsrsDiv" class="panel-body rsDiv"></div>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="panel panel-default">
 							<div class="panel-heading">面试通过被录用的人数</div>
-							<div class="panel-body rsDiv">60</div>
+							<div id="mstgblyrsDiv" class="panel-body rsDiv"></div>
 						</div>
 					</div>
 				</div>
@@ -55,7 +55,7 @@ font-size: 24px;
 				</div>
 			</div>
 			<div class="panel panel-default">
-				<div class="panel-heading">平均薪资最高的5个职业类别</div>
+				<div class="panel-heading">投递简历最多的5个职业类别</div>
 				<div class="panel-body">
 				<div id="gwxzTop10" style="width:100%; height: 300px;">
 				

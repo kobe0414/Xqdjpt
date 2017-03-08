@@ -1,12 +1,53 @@
+var gwxz;
+var gwxzTop5;
 $(function(){
-	var gwxz = echarts.init(document.getElementById('gwxz'));
-	gwxz.setOption(getGwxzChartsOption());
+	gwxz = echarts.init(document.getElementById('gwxz'));
+	gwxzTop5 = echarts.init(document.getElementById('gwxzTop10'));
 	
-	var gwxzTop10 = echarts.init(document.getElementById('gwxzTop10'));
-	gwxzTop10.setOption(getGwxzTop10Option());
+	getXxtdjlrs();
+	getXxssbymss();
+	getXxxsblys();
+	setGwxzChartsOption();
+	setGwxzTop5Option();
 })
 
-function getGwxzChartsOption(){
+function setGwxzChartsOption(){
+	$.ajax({
+		url:'../countXzfbqk.do',
+		type:'post',
+		data:{
+			xxid:$.cookie('yhid')
+		},
+		success:function(data){			
+			gwxz.setOption(getGwxzChartsOption(data));
+		}
+	});
+}
+
+function setGwxzTop5Option(){
+	$.ajax({
+		url:'../countGwyprsTop5.do',
+		type:'post',
+		data:{
+			xxid:$.cookie('yhid')
+		},
+		success:function(data){			
+			gwxzTop5.setOption(getGwxzTop5Option(data));
+		}
+	});
+}
+
+function getGwxzChartsOption(data){
+	var legendData = [];
+	var seriesData = [];
+	$.each(data,function(i,v){
+		legendData[i] = v.gwyxmc;
+		var nameAndValue = {
+				name:v.gwyxmc,
+				value:v.gwsl
+		}
+		seriesData[i] = nameAndValue;
+	});
 	option = {
 		    title : {
 		        text: '岗位薪资分布情况',
@@ -19,7 +60,7 @@ function getGwxzChartsOption(){
 		    legend: {
 		        orient: 'vertical',
 		        left: 'left',
-		        data: ['2000以下/月','2000-3000/月','3000-4000/月','4000以上/月']
+		        data: legendData
 		    },
 		    series : [
 		        {
@@ -27,12 +68,7 @@ function getGwxzChartsOption(){
 		            type: 'pie',
 		            radius : '55%',
 		            center: ['50%', '60%'],
-		            data:[
-		                {value:335, name:'2000以下/月'},
-		                {value:310, name:'2000-3000/月'},
-		                {value:234, name:'3000-4000/月'},
-		                {value:135, name:'4000以上/月'}
-		            ],
+		            data:seriesData,
 		            itemStyle: {
 		                emphasis: {
 		                    shadowBlur: 10,
@@ -47,24 +83,70 @@ function getGwxzChartsOption(){
 	return option;
 }
 
-function getGwxzTop10Option(){
+function getGwxzTop5Option(data){
+	var xAxisData = [];
+	var seriesData = [];
+	$.each(data,function(i,v){
+		xAxisData[i] = v.gwlbmc;
+		seriesData[i] = v.yprs;
+	});
 	var option = {
             title: {
-                text: '岗位薪资Top5'
+                text: '岗位类型应聘人数Top5'
             },
             tooltip: {},
             legend: {
-                data:['薪资']
+                data:['应聘人数']
             },
             xAxis: {
-                data: ["软件/互联网开发/系统集成","互联网产品/运营管理","销售管理","物流/仓储","项目管理/项目协调"]
+                data: xAxisData
             },
             yAxis: {},
             series: [{
-                name: '薪资',
+                name: '应聘人数',
                 type: 'bar',
-                data: [50, 45, 36, 25, 10]
+                data: seriesData
             }]
         };
 	return option;
+}
+
+
+function getXxtdjlrs(){
+	$.ajax({
+		url:'../countXxxstjlsByXxid.do',
+		type:'post',
+		data:{
+			xxid:$.cookie('yhid')
+		},
+		success:function(data){
+			$('#bxtdjlrsDiv').html(data.data);
+		}
+	});
+}
+
+function getXxssbymss(){
+	$.ajax({
+		url:'../countXxssbymssByXxid.do',
+		type:'post',
+		data:{
+			xxid:$.cookie('yhid')
+		},
+		success:function(data){
+			$('#bxbymsrsDiv').html(data.data);
+		}
+	});
+}
+
+function getXxxsblys(){
+	$.ajax({
+		url:'../countXxxsblysByXxid.do',
+		type:'post',
+		data:{
+			xxid:$.cookie('yhid')
+		},
+		success:function(data){
+			$('#mstgblyrsDiv').html(data.data);
+		}
+	});
 }

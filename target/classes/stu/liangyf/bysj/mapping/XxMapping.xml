@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="stu.liangyf.bysj.dao.XxDao">
+
+
+	<select id="countXxxstjlsByXxid" resultType="java.lang.Integer"
+		parameterType="String">
+		SELECT count(DISTINCT x.xsid)
+		from xsjbxx x
+		where
+		x.xsszxxid = #{xxid}
+		and EXISTS (select 1 from xsypb y where y.xsid =
+		x.xsid)
+	</select>
+
+	<select id="countXxssbymssByXxid" resultType="java.lang.Integer"
+		parameterType="String">
+		SELECT count(DISTINCT x.xsid)
+		from xsjbxx x
+		where
+		x.xsszxxid = #{xxid}
+		and EXISTS (select 1 from xsypb y where y.xsid =
+		x.xsid and y.dqzt in
+		('2','4','5'))
+	</select>
+
+	<select id="countXxxsblysByXxid" resultType="java.lang.Integer"
+		parameterType="String">
+		SELECT count(DISTINCT x.xsid)
+		from xsjbxx x
+		where
+		x.xsszxxid = #{xxid}
+		and EXISTS (select 1 from xsypb y where y.xsid =
+		x.xsid and y.dqzt = '4')
+	</select>
+
+	<select id="countGwyprsTop5" resultType="stu.liangyf.bysj.entity.GwyprsTop5Entity">
+		select a.gwlbid,(select
+		wd.gwlbmc from gwlbwd wd where wd.gwlbid = a.gwlbid) gwlbmc,yprs
+		from (
+		SELECT g.gwlbid,count(DISTINCT x.gwid) yprs
+		from xsypb x,gwjbxx g
+		where
+		x.gwid = g.gwid
+		group by g.gwlbid) a order by a.yprs desc
+		limit 0,5
+	</select>
+
+	<select id="countXzfbqk" resultType="stu.liangyf.bysj.entity.XzfbqkEntity">
+		SELECT
+		CASE
+		WHEN g.gwyx = '1'
+		THEN
+		'2000以下'
+		WHEN g.gwyx =
+		'2' THEN
+		'2000-3000/月'
+		WHEN g.gwyx = '3' THEN
+		'3000-4000/月'
+		WHEN g.gwyx =
+		'4' THEN
+		'4000以上/月'
+		END gwyxmc,
+		g.gwyx,
+		count(*) gwsl
+		FROM
+		gwjbxx g
+		GROUP BY
+		g.gwyx
+	</select>
+
+	<select id="getXxjbxx" resultType="stu.liangyf.bysj.entity.XxjbxxEntity">
+		SELECT x.xxid,x.xxmc,x.xxzh
+		from xxjbxx x
+		where x.xxzh = #{0} and x.xxdlmm = #{1}
+	</select>
+</mapper>

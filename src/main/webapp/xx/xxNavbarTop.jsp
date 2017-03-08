@@ -73,7 +73,7 @@ $(function(){
 
 function yhtc(){
 	$.cookie('yhid',null);
-	window.location.href='yhdl.jsp';
+	window.location.href='../yhdl.jsp';
 }
 </script>
 </html>

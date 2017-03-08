@@ -113,9 +113,9 @@ function setGwjbxx(){
 				$('#lodingDiv').before(totalHtml);
 				offset += searchCondition.limit;
 				flag = true;
-				if(!sfyGdt()){
-					$('#lodingDiv').html('没有更多了...');
-				}
+//				if(!sfyGdt()){
+//					$('#lodingDiv').html('没有更多了...');
+//				}
 			}
 			
 		}

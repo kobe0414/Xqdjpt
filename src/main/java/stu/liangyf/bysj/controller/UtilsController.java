@@ -19,6 +19,7 @@ import stu.liangyf.bysj.entity.ProvinceEntity;
 import stu.liangyf.bysj.entity.SchoolEntity;
 import stu.liangyf.bysj.service.UserService;
 import stu.liangyf.bysj.service.UtilsService;
+import stu.liangyf.bysj.service.XxService;
 
 @Controller
 public class UtilsController {
@@ -28,6 +29,9 @@ public class UtilsController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private XxService xxService;
 	
 	@RequestMapping(value = "yhdl.do")
 	@ResponseBody
@@ -42,8 +46,8 @@ public class UtilsController {
 			object = userService.getXsjbxx(yhzh, yhzh, yhmm);
 		}else if("2".equals(yhlx)){ //企业登录
 			object = userService.getQyjbxx(yhzh, yhzh, yhmm);
-		}else {
-			
+		}else if("3".equals(yhlx)) {
+			object = xxService.getXxjbxx(yhzh, yhmm);
 		}
 		HttpSession session = request.getSession();
 		if(object == null){ //用户名或密码错误 返回状态 0

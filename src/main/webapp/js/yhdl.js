@@ -35,8 +35,9 @@ function yhdl(){
 				}else if(yhlx == '2'){
 					$.cookie('yhid',data.data.qyid,{ expires: 1,path:'/Xqdjpt/qy'});
 					window.location.href='qy/qygwlbym.jsp';
-				}else if(yhlx == ''){
-					
+				}else if(yhlx == '3'){
+					$.cookie('yhid',data.data.xxid,{ expires: 1,path:'/Xqdjpt/xx'});
+					window.location.href='xx/xxfxtjym.jsp';
 				}
 				
 			}
