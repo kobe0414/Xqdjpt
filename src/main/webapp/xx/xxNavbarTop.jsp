@@ -49,6 +49,8 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">我的 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
+					<li><a href="javascript:xgmm()">修改密码</a></li>
+						<li role="separator" class="divider"></li>
 						<li><a href="javascript:yhtc()">退出</a></li>
 					</ul></li>
 			</ul>
@@ -74,6 +76,9 @@ $(function(){
 function yhtc(){
 	$.cookie('yhid',null);
 	window.location.href='../yhdl.jsp';
+}
+function xgmm(){
+	window.location.href='../xgmm.jsp?yhzh='+ $.cookie('yhzh') + '&yhlx='+ $.cookie('yhlx') ;
 }
 </script>
 </html>

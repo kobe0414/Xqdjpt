@@ -20,4 +20,5 @@ public interface XxDao {
 	
 	public XxjbxxEntity getXxjbxx(String xxzh,String xxdlmm);
 	
+	public int updateXxdlmm(String xmm,String xxzh,String xxdlmm);
 }

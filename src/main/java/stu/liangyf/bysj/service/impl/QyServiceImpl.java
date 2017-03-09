@@ -135,4 +135,11 @@ public class QyServiceImpl implements QyService{
 		return qyDao.updateXsypzt(params);
 	}
 
+	@Override
+	public int updateQydlmm(String xmm, String qyyx, String qydlmm) {
+		
+		return qyDao.updateQydlmm(xmm, qyyx, qydlmm);
+	}
+
+	
 }

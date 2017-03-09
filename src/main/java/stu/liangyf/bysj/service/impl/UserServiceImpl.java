@@ -142,6 +142,12 @@ public class UserServiceImpl implements UserService{
 		return userDao.updateXsjbxx(xsjbxxEntity);
 	}
 
+	@Override
+	public int updateXsdlmm(String xmm, String xxzh, String xsdlmm) {
+		
+		return userDao.updateXsdlmm(xmm, xxzh, xsdlmm);
+	}
+
 	
 
 }

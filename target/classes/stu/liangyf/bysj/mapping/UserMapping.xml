@@ -159,7 +159,8 @@
 		city c
 		WHERE
 		t.gwfbqyid = q.qyid
-		and t.gwyxbz = 'Y'
+		and
+		t.gwyxbz = 'Y'
 		AND
 		t.gwgzdd = c.cityId
 		<if test="gwgzdd != null">
@@ -219,7 +220,8 @@
 		g.gwms,
 		q.qyjs
 		from gwjbxx g,qyjbxx q,city c,gwlbwd l
-		where g.gwfbqyid = q.qyid and g.gwyxbz = 'Y' 
+		where g.gwfbqyid = q.qyid and
+		g.gwyxbz = 'Y'
 		and
 		g.gwgzdd = c.cityId
 		and g.gwlbid = l.gwlbid
@@ -250,12 +252,12 @@
 			and x.dqzt = #{dqzt}
 		</if>
 		<if test="tdsjsx=='1'.toString()">
-		order by x.tdjlsj desc
+			order by x.tdjlsj desc
 		</if>
 		<if test="tdsjsx=='2'.toString()">
-		order by x.tdjlsj
+			order by x.tdjlsj
 		</if>
-		
+
 		LIMIT #{offset} ,#{limit}
 	</select>
 
@@ -287,15 +289,26 @@
 		t.xscsrq = #{xscsrq}
 		,t.xsyx = #{xsyx}
 		,t.xssjhm = #{xssjhm}
-		,t.xsxl = #{xsxl}
+		,t.xsxl =
+		#{xsxl}
 		,t.xszzmm = #{xszzmm}
 		,t.xsszxxid = #{xsszxxid}
-		,t.xsqwcszy = #{xsqwcszy}
+		,t.xsqwcszy =
+		#{xsqwcszy}
 		,t.xsqwgzdd = #{xsqwgzdd}
 		,t.xsqwyx = #{xsqwyx}
-		,t.xsshzs = #{xsshzs}
+		,t.xsshzs =
+		#{xsshzs}
 		,t.xszyjn = #{xszyjn}
 		,t.xszwpj = #{xszwpj}
-		where t.xsid = #{xsid}
+		where t.xsid =
+		#{xsid}
+	</update>
+
+	<update id="updateXsdlmm">
+		UPDATE
+		xsjbxx x
+		set x.xsdlmm = #{0}
+		where (x.xssjhm = #{1} or x.xsyx = #{1}) and x.xsdlmm = #{2}
 	</update>
 </mapper>

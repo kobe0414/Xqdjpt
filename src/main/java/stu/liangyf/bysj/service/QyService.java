@@ -27,4 +27,8 @@ public interface QyService {
 	public int deleteQygw(HttpServletRequest request);
 	
 	public int updateXsypzt(HttpServletRequest request);
+	
+	public int updateQydlmm(String xmm,String qyyx,String qydlmm);
+	
+	
 }

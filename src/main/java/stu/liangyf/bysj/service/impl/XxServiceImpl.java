@@ -53,4 +53,10 @@ public class XxServiceImpl implements XxService{
 		return xxDao.getXxjbxx(xxzh, xxdlmm);
 	}
 
+	@Override
+	public int updateXxdlmm(String xmm, String xxzh, String xxdlmm) {
+		
+		return xxDao.updateXxdlmm(xmm, xxzh, xxdlmm);
+	}
+
 }

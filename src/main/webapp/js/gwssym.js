@@ -82,7 +82,7 @@ $(document).ready(function() {
 
 function setGwjbxx(){
 	if(offset == 0){
-		$('#gwlbDiv').html('<div id="lodingDiv" style="text-align: center;"><img alt="" src="images/loding.gif"></div>');
+		$('#gwlbDiv').html('<div id="lodingDiv" style="text-align: center;"><img alt="" src="images/loding.gif">正在加载...</div>');
 	}
 	searchCondition.offset = offset;
 	searchCondition.xsid = $.cookie('yhid');
@@ -113,9 +113,9 @@ function setGwjbxx(){
 				$('#lodingDiv').before(totalHtml);
 				offset += searchCondition.limit;
 				flag = true;
-//				if(!sfyGdt()){
-//					$('#lodingDiv').html('没有更多了...');
-//				}
+				if(!sfyGdt()){
+					$('#lodingDiv').html('没有更多了...');
+				}
 			}
 			
 		}
@@ -204,11 +204,13 @@ function setCity(provinceId) {
 	});
 }
 function sfyGdt(){
-	var flag = false;
-	$("body").scrollTop(10); 
-	if($("body").scrollTop() > 0) {
-		flag = true;
+	var scrollHeight = $(document).height();
+	var windowHeight = $(this).height();
+	
+	if(scrollHeight > windowHeight){
+		return true;
+	}else {
+		return false;
 	}
-	$("body").scrollTop(0); 
-	return flag;
+
 }

@@ -28,4 +28,6 @@ public interface QyDao {
 	public int deleteQygw(String gwid);
 	
 	public int updateXsypzt(Map<String,Object> params);
+	
+	public int updateQydlmm(String xmm,String qyyx,String qydlmm);
 }

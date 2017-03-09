@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>校企对接平台登录</title>
+<title>密码修改</title>
 <link rel="stylesheet"
 	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -41,24 +41,25 @@
 <body>
 	<div class="dlbkDiv">
 		<div class="dlbkbtDiv">
-			<span>校企对接平台</span>
+			<span>修改密码</span>
 		</div>
 		<div class="dlbkztDiv">
 			<form>
-				<div class="form-group">
-					<input type="text" class="form-control" id="yhzhInput"
-						placeholder="邮箱或手机号或账号">
+			<div class="form-group">
+					<input type="password" class="form-control"
+						id="xmmInput" placeholder="请输入新密码">
 				</div>
 				<div class="form-group">
 					<input type="password" class="form-control"
-						id="yhmmInput" placeholder="密码">
+						id="qrxmmInput" placeholder="请再次输入新密码">
 				</div>
+				
 				<div class="form-group">
-					<input type="radio" name="yhlx" checked="checked" value="1"/>学生&nbsp;&nbsp;
-					<input type="radio" name="yhlx" value="2" />企业&nbsp;&nbsp; <input
-						type="radio" name="yhlx" value="3" />学校&nbsp;&nbsp;
+					<input type="password" class="form-control"
+						id="dlmmInput" placeholder="请输入旧密码">
 				</div>
-				<button id="yhdlButton" type="button" class="btn btn-default btn-block">登录</button>
+				
+				<button id="qrxgButton" type="button" class="btn btn-default btn-block">确认修改</button>
 			</form>
 		</div>
 	</div>
@@ -66,5 +67,5 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/jquery-confirm.js"></script>	
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/yhdl.js"></script>
+	src="<%=request.getContextPath()%>/js/xgmm.js"></script>
 </html>

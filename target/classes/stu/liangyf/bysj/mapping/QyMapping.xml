@@ -178,7 +178,15 @@
 	<update id="updateXsypzt" parameterType="hashmap">
 		update
 		xsypb t
-		set t.dqzt = #{dqzt}
+		set t.dqzt
+		= #{dqzt}
 		where t.gwid = #{gwid} and t.xsid = #{xsid}
+	</update>
+
+	<update id="updateQydlmm">
+		update
+		qyjbxx q
+		set q.qydlmm = #{0}
+		where q.qyyx = #{1} and q.qydlmm = #{2}
 	</update>
 </mapper>

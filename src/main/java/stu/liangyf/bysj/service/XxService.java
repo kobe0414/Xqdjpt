@@ -19,4 +19,6 @@ public interface XxService {
 	public List<GwyprsTop5Entity> countGwyprsTop5();
 	
 	public XxjbxxEntity getXxjbxx(String xxzh,String xxdlmm);
+	
+	public int updateXxdlmm(String xmm,String xxzh,String xxdlmm);
 }

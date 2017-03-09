@@ -29,14 +29,18 @@ function yhdl(){
                     }
                 });
 			}else{
+				$.cookie('yhzh',$('#yhzhInput').val(),{ expires: 1 });
 				if(yhlx == '1'){
 					$.cookie('yhid',data.data.xsid,{ expires: 1 });
+					$.cookie('yhlx','1',{ expires: 1 });
 					window.location.href='gwssym.jsp';
 				}else if(yhlx == '2'){
 					$.cookie('yhid',data.data.qyid,{ expires: 1,path:'/Xqdjpt/qy'});
+					$.cookie('yhlx','2',{ expires: 1,path:'/Xqdjpt/qy'});
 					window.location.href='qy/qygwlbym.jsp';
 				}else if(yhlx == '3'){
 					$.cookie('yhid',data.data.xxid,{ expires: 1,path:'/Xqdjpt/xx'});
+					$.cookie('yhlx','3',{ expires: 1,path:'/Xqdjpt/xx'});
 					window.location.href='xx/xxfxtjym.jsp';
 				}
 				

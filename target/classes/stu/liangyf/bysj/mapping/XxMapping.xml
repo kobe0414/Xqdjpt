@@ -75,4 +75,11 @@
 		from xxjbxx x
 		where x.xxzh = #{0} and x.xxdlmm = #{1}
 	</select>
+
+	<update id="updateXxdlmm">
+		update
+		xxjbxx x
+		set x.xxdlmm = #{0}
+		where x.xxzh = #{1} and x.xxdlmm = #{2}
+	</update>
 </mapper>

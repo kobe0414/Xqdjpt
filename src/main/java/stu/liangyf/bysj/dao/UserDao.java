@@ -29,4 +29,6 @@ public interface UserDao {
 	public int updateXsjlmc(String xsid,String xsjlmc);
 	
 	public int updateXsjbxx(XsjbxxEntity xsjbxxEntity);
+	
+	public int updateXsdlmm(String xmm,String xxzh,String xsdlmm);
 }

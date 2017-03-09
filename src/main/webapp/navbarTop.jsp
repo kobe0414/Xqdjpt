@@ -48,7 +48,7 @@
 					    <li><a href="gwssym.jsp">岗位搜索</a></li>	
 						<li><a href="wdjlym.jsp">我的简历</a></li>						
 						<li><a href="wdtdjlym.jsp">我的投递记录</a></li>
-						<li><a href="#">账户设置</a></li>
+						<li><a href="javascript:xgmm()">修改密码</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="javascript:yhtc()">退出</a></li>
 					</ul></li>
@@ -107,6 +107,9 @@ $(function(){
 function yhtc(){
 	$.cookie('yhid',null);
 	window.location.href='yhdl.jsp';
+}
+function xgmm(){
+	window.location.href='xgmm.jsp?yhzh='+ $.cookie('yhzh') + '&yhlx='+ $.cookie('yhlx') ;
 }
 </script>
 </html>

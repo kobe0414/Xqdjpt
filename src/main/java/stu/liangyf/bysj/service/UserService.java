@@ -31,4 +31,5 @@ public interface UserService {
 	
 	public int updateXsjbxx(HttpServletRequest request);
 	
+	public int updateXsdlmm(String xmm,String xxzh,String xsdlmm);
 }

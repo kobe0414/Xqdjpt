@@ -17,6 +17,7 @@ import stu.liangyf.bysj.entity.CityEntity;
 import stu.liangyf.bysj.entity.GwlbwdEntity;
 import stu.liangyf.bysj.entity.ProvinceEntity;
 import stu.liangyf.bysj.entity.SchoolEntity;
+import stu.liangyf.bysj.service.QyService;
 import stu.liangyf.bysj.service.UserService;
 import stu.liangyf.bysj.service.UtilsService;
 import stu.liangyf.bysj.service.XxService;
@@ -29,6 +30,9 @@ public class UtilsController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private QyService qyService;
 	
 	@Autowired
 	private XxService xxService;
@@ -59,6 +63,30 @@ public class UtilsController {
 		}
 		
 		return resultJson;
+	}
+	
+	@RequestMapping(value = "updateYhdlmm.do")
+	@ResponseBody
+	public JSONObject updateYhdlmm(HttpServletRequest request){		
+		JSONObject resultJSON = new JSONObject();
+		String yhzh = request.getParameter("yhzh");
+		String yhxmm = request.getParameter("yhxmm");
+		String yhdlmm = request.getParameter("yhdlmm");
+		String yhlx = request.getParameter("yhlx");
+		int result = 0;
+		if("1".equals(yhlx)){
+			result = userService.updateXsdlmm(yhxmm, yhzh, yhdlmm);
+		}else if("2".equals(yhlx)){ 
+			result = qyService.updateQydlmm(yhxmm, yhzh, yhdlmm);
+		}else if("3".equals(yhlx)) {
+			result = xxService.updateXxdlmm(yhxmm, yhzh, yhdlmm);
+		}
+		if(result == 1){
+			resultJSON.accumulate("status", "1");
+		}else{
+			resultJSON.accumulate("status", "0");
+		}
+		return resultJSON;
 	}
 	
 	@RequestMapping(value = "listProvince.do")

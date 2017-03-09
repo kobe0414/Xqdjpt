@@ -52,6 +52,7 @@
 						<li><a href="qygwlbym.jsp">应聘信息</a></li>
 						<li><a href="qyfbgwym.jsp">实习岗位发布</a></li>
 						<li><a href="qyjbxxym.jsp">企业基本信息</a></li>
+						<li><a href="javascript:xgmm()">修改密码</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="javascript:yhtc()">退出</a></li>
 					</ul></li>
@@ -78,6 +79,10 @@ $(function(){
 function yhtc(){
 	$.cookie('yhid',null);
 	window.location.href='../yhdl.jsp';
+}
+
+function xgmm(){
+	window.location.href='../xgmm.jsp?yhzh='+ $.cookie('yhzh') + '&yhlx='+ $.cookie('yhlx') ;
 }
 </script>
 </html>
