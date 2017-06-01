@@ -7,7 +7,6 @@ $(function(){
         }
     })(jQuery);
 	
-	alert($.cookie('yhlx'));
 	$('#qrxgButton').click(function(){
 		updateYhdlmm();
 	});

@@ -50,12 +50,6 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputEmail3" class="col-sm-3 control-label">企业性质:</label>
-				<div class="col-sm-9">
-					<label id="qyxz" class="control-label"></label>
-				</div>
-			</div>
-			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-3 control-label">企业行业:</label>
 				<div class="col-sm-9">
 					<label id="qyhy" class="control-label"></label>
@@ -101,12 +95,7 @@
 						<input id="qygmInput" type="text" class="form-control" placeholder="企业规模">
 					</div>
 				</div>
-				<div class="form-group">
-					<label for="inputEmail3" class="col-sm-3 control-label">企业性质:</label>
-					<div class="col-sm-9">
-						<input id="qyxzInput" type="text" class="form-control" placeholder="企业性质">
-					</div>
-				</div>
+				
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label">企业行业:</label>
 					<div class="col-sm-9">

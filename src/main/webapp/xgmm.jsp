@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel='icon' href='<%=request.getContextPath()%>/images/xiao.ico' type='image/x-ico' />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>密码修改</title>
 <link rel="stylesheet"
@@ -20,10 +21,18 @@
 	src="<%=request.getContextPath()%>/js/jquery.cookie.js"></script>
 </head>
 <style>
+body {
+	background-color: #FCFCFC;
+}
+
+.topDiv {
+	height: 200px;
+}
+
 .dlbkDiv {
 	width: 400px;
-	height: 600px;
-	background-color: #E5E5E5;
+	height: 400px;
+	background-color: #FFFFFF;
 	margin: 0 auto;
 }
 
@@ -39,33 +48,35 @@
 }
 </style>
 <body>
+	<div class="topDiv"></div>
 	<div class="dlbkDiv">
 		<div class="dlbkbtDiv">
 			<span>修改密码</span>
 		</div>
 		<div class="dlbkztDiv">
 			<form>
-			<div class="form-group">
-					<input type="password" class="form-control"
-						id="xmmInput" placeholder="请输入新密码">
+				<div class="form-group">
+					<input type="password" class="form-control" id="xmmInput"
+						placeholder="请输入新密码">
 				</div>
 				<div class="form-group">
-					<input type="password" class="form-control"
-						id="qrxmmInput" placeholder="请再次输入新密码">
+					<input type="password" class="form-control" id="qrxmmInput"
+						placeholder="请再次输入新密码">
 				</div>
-				
+
 				<div class="form-group">
-					<input type="password" class="form-control"
-						id="dlmmInput" placeholder="请输入旧密码">
+					<input type="password" class="form-control" id="dlmmInput"
+						placeholder="请输入旧密码">
 				</div>
-				
-				<button id="qrxgButton" type="button" class="btn btn-default btn-block">确认修改</button>
+
+				<button id="qrxgButton" type="button"
+					class="btn btn-default btn-block">确认修改</button>
 			</form>
 		</div>
 	</div>
 </body>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/jquery-confirm.js"></script>	
+	src="<%=request.getContextPath()%>/js/jquery-confirm.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/xgmm.js"></script>
 </html>

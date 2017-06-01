@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.liangyf.TestLiangyf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,6 +49,8 @@ public class UtilsController {
 		//学生登录
 		if("1".equals(yhlx)){
 			object = userService.getXsjbxx(yhzh, yhzh, yhmm);
+			TestLiangyf l = new TestLiangyf();
+			System.out.println("TestLiangyf... = " + l.sumCount(12));
 		}else if("2".equals(yhlx)){ //企业登录
 			object = userService.getQyjbxx(yhzh, yhzh, yhmm);
 		}else if("3".equals(yhlx)) {

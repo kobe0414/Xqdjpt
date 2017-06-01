@@ -42,9 +42,9 @@ public class UserController {
 	@Autowired
 	public UserService userService;
 	
-//	public static String filePath = "C:/uploadFile";
+	public static String filePath = "C:/uploadFile";
 	
-	public static String filePath = "/root/xqdjpt/xsjl";
+//	public static String filePath = "/root/xqdjpt/xsjl";
 	
 	@RequestMapping(value = "getXsjbxxByxsid.do")
 	@ResponseBody
