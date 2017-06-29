@@ -7,6 +7,7 @@ $(function(){
 		setCity($(this).val());
 	});
 	
+	//HelloWorld
 	$('#fbHuoBcSpan').click(function(){
 		fbgwjbxx();
 	});
