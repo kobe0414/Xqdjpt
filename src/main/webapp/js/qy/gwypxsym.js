@@ -2,7 +2,7 @@ $(function(){
 	
 	$('#gwmcH4').html(decodeURI($.getUrlParam('gwmc')));
 	
-	//1.初始化hhhh
+	//1.初始化Table
     var oTable = new TableInit();
     oTable.Init();
     
