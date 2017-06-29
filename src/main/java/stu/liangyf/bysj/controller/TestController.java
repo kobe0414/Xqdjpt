@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -15,11 +16,22 @@ import net.sf.json.JSONObject;
 import stu.liangyf.bysj.entity.QyjbxxEntity;
 import stu.liangyf.bysj.service.TestService;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class TestController {
 	
 	@Autowired
 	private TestService testService;
+
+	@RequestMapping("/{id}/restful.do")
+	public String restful(@PathVariable("id") int id, HttpServletRequest request){
+
+		System.out.println(request.getMethod());
+		System.out.println("id === " + id);
+
+		return "123";
+	}
 	
 	@RequestMapping(value = "testJson.do")
 	@ResponseBody
