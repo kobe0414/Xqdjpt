@@ -7,7 +7,8 @@ $(function(){
 		setCity($(this).val());
 	});
 	
-	//HelloWorld
+	//HelloWorld ABCDT
+	//dssda
 	$('#fbHuoBcSpan').click(function(){
 		fbgwjbxx();
 	});
